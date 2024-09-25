@@ -5,11 +5,14 @@
 //  Created by Keisuke Chinone on 2024/09/25.
 //
 
-
+#if os(macOS)
 import SwiftUI
 
-//UtilityWindow
-
+@available(macOS 15, *)
+@available(iOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
+@available(visionOS, unavailable)
 public struct AboutScene<Content>: Scene where Content : View {
     let appName: String = {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
@@ -37,3 +40,4 @@ public struct AboutScene<Content>: Scene where Content : View {
         }
     }
 }
+#endif
