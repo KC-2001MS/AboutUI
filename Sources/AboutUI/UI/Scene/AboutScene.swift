@@ -8,9 +8,8 @@
 
 import SwiftUI
 
-//UtilityWindow
-
-public struct AboutScene<Content>: Scene where Content : View {
+@available(macOS 15, *)
+public struct About<Content>: Scene where Content : View {
     let appName: String = {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
     }()
@@ -37,3 +36,6 @@ public struct AboutScene<Content>: Scene where Content : View {
         }
     }
 }
+
+@available(*, deprecated, renamed: "About")
+public typealias AboutScene = About

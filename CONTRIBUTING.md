@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Thank you for your interest in contributing to AboutUI, which uses SwiftUI to add an “About Your App” page with simple code.
+Thank you for your interest in contributing to AboutUI, which uses SwiftUI to add an “About the App” page with simple code.
 
 ## How to Contribute
 

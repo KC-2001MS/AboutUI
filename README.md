@@ -1,10 +1,10 @@
 # AboutUI
 
-SwiftUI library to implement an “about the app” page like an Xcode app.
+SwiftUI library to implement an “About the App” page like an Xcode app.
 
 ## Description
 
-Using this library, you can implement an “about app” page in your own app, as implemented in the Xcode app.
+Using this library, you can implement an “About the App” page in your own app, as implemented in the Xcode app.
 Since this library is made by SwiftUI, it can be implemented with a small number of lines.
 You can further customize it and add buttons.
 
@@ -48,7 +48,7 @@ struct SampleApp: App {
             ContentView()
         }
 
-        AboutScene()
+        About()
     }
 }
 ```
@@ -66,7 +66,7 @@ struct SampleApp: App {
             ContentView()
         }
         
-        AboutScene {
+        About {
             Button(action: {
                 
             }) {

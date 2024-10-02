@@ -16,7 +16,7 @@ struct SampleApp: App {
             ContentView()
         }
         
-//        AboutScene {
+//        About {
 //            Button(action: {
 //                
 //            }) {
@@ -26,6 +26,6 @@ struct SampleApp: App {
 //            .buttonStyle(.bordered)
 //        }
         
-        AboutScene()
+        About()
     }
 }

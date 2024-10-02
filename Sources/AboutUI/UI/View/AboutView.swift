@@ -9,7 +9,7 @@
 import SwiftUI
 
 @available(macOS 15, *)
-public struct AboutView<V: View>: View {
+struct AboutView<V: View>: View {
     let appName: String = {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
     }()
@@ -32,17 +32,17 @@ public struct AboutView<V: View>: View {
     
     let initFlag: Bool
     
-    public init(@ViewBuilder content: @escaping () -> V) {
+    init(@ViewBuilder content: @escaping () -> V) {
         self.content = content()
         self.initFlag = true
     }
     
-    public init() where V == EmptyView {
+    init() where V == EmptyView {
         self.content = EmptyView()
         self.initFlag = false
     }
     
-    public var body: some View {
+    var body: some View {
         HStack(alignment: .center, spacing: 20) {
             Image(nsImage: NSImage(named: "AppIcon") ?? NSImage())
                 .resizable()

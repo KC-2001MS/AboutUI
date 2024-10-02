@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@available(macOS 15, *)
 struct AboutCommands: Commands {
     let appName: String = {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
