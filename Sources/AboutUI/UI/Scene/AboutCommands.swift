@@ -5,7 +5,7 @@
 //  Created by Keisuke Chinone on 2024/09/25.
 //
 
-
+#if os(macOS)
 import SwiftUI
 
 @available(macOS 15, *)
@@ -28,3 +28,4 @@ struct AboutCommands: Commands {
         }
     }
 }
+#endif
