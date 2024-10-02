@@ -5,10 +5,14 @@
 //  Created by Keisuke Chinone on 2024/09/25.
 //
 
-#if os(macOS)
 import SwiftUI
 
+#if os(macOS)
 @available(macOS 15, *)
+@available(iOS, unavailable)
+@available(visionOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 public struct About<Content>: Scene where Content : View {
     let appName: String = {
         return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
@@ -38,4 +42,9 @@ public struct About<Content>: Scene where Content : View {
 }
 
 @available(*, deprecated, renamed: "About")
+@available(iOS, unavailable)
+@available(visionOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 public typealias AboutScene = About
+#endif
