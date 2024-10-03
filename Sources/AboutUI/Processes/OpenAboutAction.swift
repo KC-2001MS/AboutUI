@@ -12,7 +12,7 @@ import SwiftUI
 public struct OpenAboutAction: Sendable {
     @Environment(\.openWindow) private var openWindow
     
-    func callAsFunction() {
+    @MainActor @preconcurrency public func callAsFunction() {
         openWindow(id: "AboutUI:About")
     }
 }

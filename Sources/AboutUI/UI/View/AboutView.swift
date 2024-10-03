@@ -30,8 +30,6 @@ struct AboutView<V: View>: View {
         return Bundle.main.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
     }()
     
-    @Environment(\.openWindow) private var openWindow
-    
     var content: V
     
     let initFlag: Bool

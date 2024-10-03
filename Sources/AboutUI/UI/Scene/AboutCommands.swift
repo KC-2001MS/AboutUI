@@ -27,8 +27,8 @@ struct AboutCommands: Commands {
             Button(action: {
                 openWindow(id: "AboutUI:About")
             }) {
-                Text("About \(appName)")
-//                Text("About \(appName)", bundle: .module)
+//                Text("About \(appName)")
+                Text("About \(appName)", bundle: .module)
             }
         }
     }
