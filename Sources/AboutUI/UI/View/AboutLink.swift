@@ -46,7 +46,8 @@ public struct DefaultAboutLinkLabel: View {
     }()
     
     public var body: some View {
-        Label(String(localized: "About \(appName)", bundle: .module), systemImage: "info.circle")
+        Label("About \(appName)", systemImage: "info.circle")
+//        Label(String(localized: "About \(appName)", bundle: .module), systemImage: "info.circle")
     }
 }
 #endif

@@ -59,14 +59,16 @@ struct AboutView<V: View>: View {
                     Text(appName)
                         .font(.system(size: 37.5))
                     
-                    Text("Version \(self.version) (\(self.buildNumber))", bundle: .module)
+                    Text("Version \(self.version) (\(self.buildNumber))")
+//                    Text("Version \(self.version) (\(self.buildNumber))", bundle: .module)
                         .font(.system(size: 12.5))
                         .fontWeight(.light)
                         .foregroundStyle(Color.secondary)
                 }
  
                 VStack(alignment: .leading, spacing: 30) {
-                    Text("Copyright \(self.copyright)", bundle: .module)
+                    Text("Copyright \(self.copyright)")
+//                    Text("Copyright \(self.copyright)", bundle: .module)
                         .font(.system(size: 9.5))
                         .fontWeight(.light)
                         .foregroundStyle(Color.secondary)
