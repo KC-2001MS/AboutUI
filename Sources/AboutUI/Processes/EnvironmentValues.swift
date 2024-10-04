@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+#if os(macOS)
+@available(macOS 15, *)
+@available(iOS, unavailable)
+@available(visionOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 extension EnvironmentValues {
     @Entry var openAbout: OpenAboutAction = OpenAboutAction()
 }
+#endif

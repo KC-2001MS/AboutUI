@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+#if os(macOS)
+@available(macOS 15, *)
+@available(iOS, unavailable)
+@available(visionOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 @MainActor
 @preconcurrency
 public struct OpenAboutAction: Sendable {
@@ -16,3 +22,4 @@ public struct OpenAboutAction: Sendable {
         openWindow(id: "AboutUI:About")
     }
 }
+#endif
