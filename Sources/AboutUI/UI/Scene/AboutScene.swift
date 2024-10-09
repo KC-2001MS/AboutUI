@@ -29,7 +29,7 @@ public struct About<Content>: Scene where Content : View {
     }
     
     public var body: some Scene {
-        Window("About \(appName)", id: "AboutUI:About") {
+        Window(String(localized: "About \(appName)", bundle: Bundle.module), id: "AboutUI:About") {
             AboutView {
                 content
             }

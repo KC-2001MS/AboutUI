@@ -19,7 +19,9 @@ let package = Package(
     targets: [
         .target(
             name: "AboutUI",
-            dependencies: []
+            resources: [
+                .process("Localizable.xcstrings")
+            ]
         ),
     ]
 )
