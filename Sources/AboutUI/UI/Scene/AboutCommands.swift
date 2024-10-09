@@ -8,6 +8,7 @@
 import SwiftUI
 
 #if os(macOS)
+/// Main menu on macOS to open an About scene
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -27,7 +28,6 @@ struct AboutCommands: Commands {
             Button(action: {
                 openWindow(id: "AboutUI:About")
             }) {
-//                Text("About \(appName)")
                 Text("About \(appName)", bundle: Bundle.module)
             }
         }

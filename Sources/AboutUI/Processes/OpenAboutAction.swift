@@ -8,6 +8,7 @@
 import SwiftUI
 
 #if os(macOS)
+/// An action that presents the about scene for an app.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)

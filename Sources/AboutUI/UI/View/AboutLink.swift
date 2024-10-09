@@ -8,6 +8,7 @@
 import SwiftUI
 
 #if os(macOS)
+/// A view that opens the About scene defined by an app.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -18,10 +19,13 @@ import SwiftUI
     
     var label: Label
     
+    /// Creates an about link with a custom label.
+    /// - Parameter label: A view to use as the label for this about link.
     public init(@ViewBuilder label: () -> Label) {
         self.label = label()
     }
     
+    /// Creates a about link with the default system label.
     public init() where Label == DefaultAboutLinkLabel {
         self.label = DefaultAboutLinkLabel()
     }
@@ -35,6 +39,7 @@ import SwiftUI
     }
 }
 
+/// The default label to use for an about link.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)

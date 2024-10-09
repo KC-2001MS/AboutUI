@@ -86,7 +86,7 @@ struct SampleApp: App {
 
 Swift-DocC is currently being implemented.
 
-[Documentation](https://kc-2001ms.github.io/AboutUI/documentation/onboardingui)
+[Documentation](https://kc-2001ms.github.io/AboutUI/documentation/aboutui)
 
 ## Install
 

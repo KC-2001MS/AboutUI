@@ -8,6 +8,7 @@
 import SwiftUI
 
 #if os(macOS)
+/// View provided by About scene
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
