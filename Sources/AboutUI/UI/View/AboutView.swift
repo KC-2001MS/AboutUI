@@ -16,7 +16,9 @@ import SwiftUI
 @available(watchOS, unavailable)
 struct AboutView<V: View>: View {
     let appName: String = {
-        return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        let string  = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        let localizedString = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? ""
+        return localizedString != "" ? localizedString : string
     }()
     
     let version: String = {
@@ -28,7 +30,9 @@ struct AboutView<V: View>: View {
     }()
     
     let copyright: String = {
-        return Bundle.main.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
+        let string  = Bundle.main.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
+        let localizedString = Bundle.main.localizedInfoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
+        return localizedString != "" ? localizedString : string
     }()
     
     var content: V

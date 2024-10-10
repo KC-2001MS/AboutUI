@@ -47,7 +47,9 @@ import SwiftUI
 @available(watchOS, unavailable)
 public struct DefaultAboutLinkLabel: View {
     let appName: String = {
-        return Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        let string  = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        let localizedString = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? ""
+        return localizedString != "" ? localizedString : string
     }()
     
     public var body: some View {
