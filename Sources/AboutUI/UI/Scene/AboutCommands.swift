@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(macOS)
 /// Main menu on macOS to open an About scene
 @available(macOS 15, *)
 @available(iOS, unavailable)
@@ -35,4 +34,3 @@ struct AboutCommands: Commands {
         }
     }
 }
-#endif

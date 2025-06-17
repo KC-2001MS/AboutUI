@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(macOS)
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -16,5 +15,6 @@ import SwiftUI
 extension EnvironmentValues {
     /// An About presentation action stored in a view’s environment.
     @Entry var openAbout: OpenAboutAction = OpenAboutAction()
+    
+    @Entry var aboutViewStyle: AnyAboutViewStyle = AnyAboutViewStyle(LargeAboutViewStyle())
 }
-#endif

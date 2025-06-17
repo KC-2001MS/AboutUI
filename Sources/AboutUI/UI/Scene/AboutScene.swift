@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(macOS)
 /// A scene presenting an interface about the application.
 @available(macOS 15, *)
 @available(iOS, unavailable)
@@ -44,10 +43,10 @@ public struct About<Content>: Scene where Content : View {
     }
 }
 
+@available(macOS 15, *)
 @available(*, deprecated, renamed: "About")
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public typealias AboutScene = About
-#endif

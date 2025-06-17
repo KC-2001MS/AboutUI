@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(macOS)
 /// An action that presents the about scene for an app.
 @available(macOS 15, *)
 @available(iOS, unavailable)
@@ -23,4 +22,3 @@ public struct OpenAboutAction: Sendable {
         openWindow(id: "AboutUI:About")
     }
 }
-#endif

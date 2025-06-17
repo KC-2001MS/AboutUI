@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-#if os(macOS)
 /// A view that opens the About scene defined by an app.
 @available(macOS 15, *)
 @available(iOS, unavailable)
@@ -56,4 +55,3 @@ public struct DefaultAboutLinkLabel: View {
         Label(String(localized: "About \(appName)", bundle: Bundle.module), systemImage: "info.circle")
     }
 }
-#endif
