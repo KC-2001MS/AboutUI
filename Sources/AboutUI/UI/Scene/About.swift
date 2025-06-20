@@ -13,7 +13,7 @@ import SwiftUI
 @available(visionOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
-public struct About<Content>: Scene where Content : View {
+public struct About<Content: View, Label: View>: Scene where Content : View {
     let appName: String = {
         let string  = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
         let localizedString = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? ""
@@ -22,12 +22,26 @@ public struct About<Content>: Scene where Content : View {
     
     var content: Content
     
-    public init(@ViewBuilder content: @escaping () -> Content) {
+    var label: Label
+    
+    public init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder label: @escaping () -> Label) {
         self.content = content()
+        self.label = label()
     }
     
-    public init() where Content == EmptyView {
+    public init(@ViewBuilder content: @escaping () -> Content) where Label == DefaultAboutLinkLabel {
+        self.content = content()
+        self.label = DefaultAboutLinkLabel()
+    }
+    
+    public init(@ViewBuilder label: @escaping () -> Label) where Content == EmptyView {
         self.content = EmptyView()
+        self.label = label()
+    }
+    
+    public init() where Content == EmptyView, Label == DefaultAboutLinkLabel {
+        self.content = EmptyView()
+        self.label = DefaultAboutLinkLabel()
     }
     
     public var body: some Scene {
@@ -38,7 +52,9 @@ public struct About<Content>: Scene where Content : View {
         }
         .windowResizability(.contentSize)
         .commands {
-            AboutCommands()
+            AboutCommands {
+                label
+            }
         }
     }
 }

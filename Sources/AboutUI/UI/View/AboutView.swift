@@ -14,9 +14,6 @@ import SwiftUI
 @available(watchOS, unavailable)
 @available(visionOS, unavailable)
 public struct AboutView<V: View>: View {
-    @Environment(\.openWindow) private var openWindow
-    
-    
     @Environment(\.aboutViewStyle) private var aboutViewStyle: AnyAboutViewStyle
     
     var content: V

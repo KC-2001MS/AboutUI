@@ -13,23 +13,24 @@ import SwiftUI
 @available(visionOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
-struct AboutCommands: Commands {
-    let appName: String = {
-        let string  = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
-        let localizedString = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? ""
-        return localizedString != "" ? localizedString : string
-    }()
+struct AboutCommands<Label: View>: Commands {
+    var label: Label
     
-    @Environment(\.openWindow) private var openWindow
+    /// Creates an about link with a custom label.
+    /// - Parameter label: A view to use as the label for this about link.
+    public init(@ViewBuilder label: () -> Label) {
+        self.label = label()
+    }
     
-    init() {}
+    /// Creates a about link with the default system label.
+    public init() where Label == DefaultAboutLinkLabel {
+        self.label = DefaultAboutLinkLabel()
+    }
     
     var body: some Commands {
         CommandGroup(replacing: .appInfo) {
-            Button(action: {
-                openWindow(id: "AboutUI:About")
-            }) {
-                Text("About \(appName)", bundle: Bundle.module)
+            AboutLink {
+                label
             }
         }
     }
