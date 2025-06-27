@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// A view styling protocol for AboutUIs that defines the appearance and behavior of an About view.
+/// 
+/// Conforming types provide a body view that renders the content based on the given configuration.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -15,8 +18,15 @@ import SwiftUI
 @preconcurrency public protocol AboutViewStyle {
     typealias Configuration = AboutViewStyleConfiguration
     
+    /// The type of view representing the body of this style.
     associatedtype Body: View
     
+    /**
+     Creates the body view for this style.
+     
+     - Parameter configuration: The style configuration containing the content and related properties.
+     - Returns: A view representing the body of the style.
+     */
     @preconcurrency @ViewBuilder func makeBody(configuration: Configuration) -> Body
 }
 
