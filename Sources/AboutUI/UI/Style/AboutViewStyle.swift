@@ -49,15 +49,21 @@ struct AnyAboutViewStyle: AboutViewStyle {
     }
 }
 
+/**
+ The configuration object containing content and properties used by an About view style.
+ */
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public struct AboutViewStyleConfiguration: Sendable {
+    var subIcon: Image
+    
     var content: Content
     
-    init(content: Content) {
+    init(subIcon: Image, content: Content) {
+        self.subIcon = subIcon
         self.content = content
     }
 
@@ -77,6 +83,7 @@ public struct AboutViewStyleConfiguration: Sendable {
         var body: some View { AnyView(content) }
     }
     
+    /// The app icon displayed in the About view.
     @preconcurrency var appIcon: AppIcon {
         return AppIcon()
     }
@@ -93,6 +100,7 @@ public struct AboutViewStyleConfiguration: Sendable {
         }
     }
     
+    /// The app name displayed in the About view.
     @preconcurrency  var appName: AppName {
         return AppName()
     }
@@ -107,6 +115,7 @@ public struct AboutViewStyleConfiguration: Sendable {
         }
     }
     
+    /// The app version displayed in the About view.
     @preconcurrency  var version: Version {
         return Version()
     }
@@ -121,6 +130,7 @@ public struct AboutViewStyleConfiguration: Sendable {
         }
     }
     
+    /// The build number displayed in the About view.
     @preconcurrency  var buildNumber: BuildNumber {
         return BuildNumber()
     }
@@ -135,6 +145,7 @@ public struct AboutViewStyleConfiguration: Sendable {
         }
     }
     
+    /// The copyright information displayed in the About view.
      var copyright: Copyright {
         return Copyright()
     }

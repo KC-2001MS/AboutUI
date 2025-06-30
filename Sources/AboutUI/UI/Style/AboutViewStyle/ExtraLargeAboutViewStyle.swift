@@ -7,12 +7,23 @@
 
 import SwiftUI
 
+/**
+ An About view style that displays application information in an extra-large, visually rich layout.
+ */
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 public struct ExtraLargeAboutViewStyle: AboutViewStyle {
+    /// Creates a new instance of the extra-large About view style.
+    public init() {}
+    /**
+     Creates the view representing the body of the extra-large About view style.
+     
+     - Parameter configuration: The configuration for the About view style.
+     - Returns: A view that displays the About information using the extra-large style.
+     */
     public func makeBody(configuration: Configuration) -> some View {
         HStack(alignment: .top, spacing: 10) {
                 configuration.appIcon
@@ -23,7 +34,10 @@ public struct ExtraLargeAboutViewStyle: AboutViewStyle {
             
             VStack(alignment: .leading, spacing: 50) {
                 VStack(alignment: .leading, spacing: 15) {
-                    Image(systemName: "apple.logo")
+                    configuration.subIcon
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 37.5, height: 37.5)
                         .font(.system(size: 37.5))
                         .foregroundStyle(Color.secondary)
                         .alignmentGuide(.top) { d in d[.top] }
@@ -62,7 +76,13 @@ public struct ExtraLargeAboutViewStyle: AboutViewStyle {
     }
 }
 
+@available(macOS 15, *)
+@available(iOS, unavailable)
+@available(visionOS, unavailable)
+@available(tvOS, unavailable)
+@available(watchOS, unavailable)
 extension AboutViewStyle where Self == RegularAboutViewStyle {
+    /// The extra-large About view style to use with an About view.
     public static var extraLarge: ExtraLargeAboutViewStyle {
         return ExtraLargeAboutViewStyle()
     }
@@ -73,3 +93,4 @@ extension AboutViewStyle where Self == RegularAboutViewStyle {
     AboutView()
         .aboutViewStyle(.extraLarge)
 }
+
