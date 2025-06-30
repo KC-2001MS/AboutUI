@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-/// A view that opens the About scene defined by an app.
+/**
+ A view that displays a button or other interactive element, which opens the About scene when activated.
+ */
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -18,17 +20,20 @@ import SwiftUI
     
     var label: Label
     
-    /// Creates an about link with a custom label.
-    /// - Parameter label: A view to use as the label for this about link.
+    /// Creates an About link with a custom label.
+    /// - Parameter label: A view to use as the label for this link.
+    ///
+    /// Creates an About link with the default system label.
     public init(@ViewBuilder label: () -> Label) {
         self.label = label()
     }
     
-    /// Creates a about link with the default system label.
+    /// Creates an About link with the default system label.
     public init() where Label == DefaultAboutLinkLabel {
         self.label = DefaultAboutLinkLabel()
     }
     
+    /// The content and behavior of the About link.
     public var body: some View {
         Button(action: {
             openWindow(id: "AboutUI:About")
@@ -38,7 +43,9 @@ import SwiftUI
     }
 }
 
-/// The default label to use for an about link.
+/**
+ The default label view for an About link, typically displaying "About <AppName>" and an info icon.
+ */
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -51,6 +58,7 @@ public struct DefaultAboutLinkLabel: View {
         return localizedString != "" ? localizedString : string
     }()
     
+    /// The content and layout of the default About link label.
     public var body: some View {
         Label(String(localized: "About \(appName)", bundle: Bundle.module), systemImage: "info.circle")
     }

@@ -14,7 +14,7 @@ import SwiftUI
 @available(watchOS, unavailable)
 extension EnvironmentValues {
     /// An About presentation action stored in a view’s environment.
-    @Entry var openAbout: OpenAboutAction = OpenAboutAction()
+    @Entry public var openAbout: OpenAboutAction = OpenAboutAction()
     
-    @Entry var aboutViewStyle: AnyAboutViewStyle = AnyAboutViewStyle(LargeAboutViewStyle())
+    @Entry internal var aboutViewStyle: AnyAboutViewStyle = AnyAboutViewStyle(.default)
 }
