@@ -89,7 +89,7 @@ public struct AboutViewStyleConfiguration: Sendable {
     }
     
     struct AppIcon: View, Sendable {
-        let appIcon: NSImage = NSImage(named: "AppIcon") ?? NSImage()
+        let appIcon: NSImage = Bundle.main.image(forResource: NSImage.Name("AppIcon")) ?? NSImage()
         
         nonisolated init() {}
             
