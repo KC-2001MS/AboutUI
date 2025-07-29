@@ -32,7 +32,10 @@ public struct About<Content: View, Label: View>: Scene where Content : View {
     /// - Parameters:
     ///   - content: The main content view for the About scene.
     ///   - label: The label view for the About scene.
-    public init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder label: @escaping () -> Label) {
+    public init(
+        @ViewBuilder content: @escaping () -> Content,
+        @ViewBuilder label: @escaping () -> Label
+    ) {
         self.content = content()
         self.label = label()
     }
@@ -59,7 +62,10 @@ public struct About<Content: View, Label: View>: Scene where Content : View {
     
     /// The content and behavior of the scene.
     public var body: some Scene {
-        Window(String(localized: "About \(appName)", bundle: Bundle.module), id: "AboutUI:About") {
+        Window(
+            String(localized: "About \(appName)", bundle: Bundle.module),
+            id: "AboutUI:About"
+        ) {
             AboutView {
                 content
             }

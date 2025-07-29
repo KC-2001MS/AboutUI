@@ -36,10 +36,13 @@ public struct LargeAboutViewStyle: AboutViewStyle {
                     configuration.appName
                         .font(.system(size: 37.5))
                     
-                    Text("Version \(configuration.version.string) (\(configuration.buildNumber.string))", bundle: .module)
-                        .font(.system(size: 12.5))
-                        .fontWeight(.light)
-                        .foregroundStyle(Color.secondary)
+                    Text(
+                        "Version \(configuration.version.string) (\(configuration.buildNumber.string))",
+                        bundle: .module
+                    )
+                    .font(.system(size: 12.5))
+                    .fontWeight(.light)
+                    .foregroundStyle(Color.secondary)
                 }
  
                 VStack(alignment: .leading, spacing: 30) {

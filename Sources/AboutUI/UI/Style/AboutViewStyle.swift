@@ -146,7 +146,7 @@ public struct AboutViewStyleConfiguration: Sendable {
     }
     
     /// The copyright information displayed in the About view.
-     var copyright: Copyright {
+    var copyright: Copyright {
         return Copyright()
     }
     

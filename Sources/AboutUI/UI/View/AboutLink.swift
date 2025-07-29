@@ -60,6 +60,9 @@ public struct DefaultAboutLinkLabel: View {
     
     /// The content and layout of the default About link label.
     public var body: some View {
-        Label(String(localized: "About \(appName)", bundle: Bundle.module), systemImage: "info.circle")
+        Label(
+            String(localized: "About \(appName)", bundle: Bundle.module),
+            systemImage: "info.circle"
+        )
     }
 }

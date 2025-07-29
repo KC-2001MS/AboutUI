@@ -31,7 +31,6 @@ public struct RegularAboutViewStyle: AboutViewStyle {
                     configuration.appIcon
                         .scaledToFit()
                         .frame(width: 135)
-                        .textSelection(.enabled)
                     
                     configuration.appName
                         .font(.headline)
@@ -60,9 +59,19 @@ public struct RegularAboutViewStyle: AboutViewStyle {
             }
         }
         .windowResizeBehavior(.disabled)
-        .navigationTitle(Text("About \(configuration.appName.string)", bundle: .module))
+        .navigationTitle(
+            Text("About \(configuration.appName.string)", bundle: .module)
+        )
         .padding(.horizontal, 40)
-        .frame(minWidth: 200, idealWidth: 250, maxWidth: 300, minHeight: 200, idealHeight: 250, maxHeight: 300, alignment: .center)
+        .frame(
+            minWidth: 200,
+            idealWidth: 250,
+            maxWidth: 300,
+            minHeight: 200,
+            idealHeight: 250,
+            maxHeight: 300,
+            alignment: .center
+        )
     }
 }
 
