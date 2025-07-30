@@ -49,11 +49,12 @@ public struct About<Content: View, Label: View>: Scene where Content : View {
     
     /// Creates an About scene with the default content and specified label.
     /// - Parameter label: The label view for the About scene.
+    @_disfavoredOverload
     public init(@ViewBuilder label: @escaping () -> Label) where Content == EmptyView {
         self.content = EmptyView()
         self.label = label()
     }
-    
+
     /// Creates an About scene with default content and default label.
     public init() where Content == EmptyView, Label == DefaultAboutLinkLabel {
         self.content = EmptyView()
