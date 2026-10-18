@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/**
- An About view style that displays application information in an extra-large, visually rich layout.
- */
+/// An About view style that displays application information in an extra-large, visually rich layout.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -18,20 +16,18 @@ import SwiftUI
 public struct ExtraLargeAboutViewStyle: AboutViewStyle {
     /// Creates a new instance of the extra-large About view style.
     public init() {}
-    /**
-     Creates the view representing the body of the extra-large About view style.
-     
-     - Parameter configuration: The configuration for the About view style.
-     - Returns: A view that displays the About information using the extra-large style.
-     */
+    /// Creates the view representing the body of the extra-large About view style.
+    ///
+    /// - Parameter configuration: The configuration for the About view style.
+    /// - Returns: A view that displays the About information using the extra-large style.
     public func makeBody(configuration: Configuration) -> some View {
         HStack(alignment: .top, spacing: 10) {
             configuration.appIcon
                 .scaledToFit()
                 .frame(width: 200, height: 200)
                 .offset(y: -200 / 10)
-                .padding(.horizontal,10)
-            
+                .padding(.horizontal, 10)
+
             VStack(alignment: .leading, spacing: 50) {
                 VStack(alignment: .leading, spacing: 15) {
                     configuration.subIcon
@@ -41,10 +37,10 @@ public struct ExtraLargeAboutViewStyle: AboutViewStyle {
                         .font(.system(size: 37.5))
                         .foregroundStyle(Color.secondary)
                         .alignmentGuide(.top) { d in d[.top] }
-                    
+
                     configuration.appName
                         .font(.largeTitle)
-                    
+
                     Text(
                         "Version \(configuration.version.string)",
                         bundle: .module
@@ -53,13 +49,13 @@ public struct ExtraLargeAboutViewStyle: AboutViewStyle {
                     .fontWeight(.light)
                     .foregroundStyle(Color.secondary)
                 }
- 
+
                 VStack(alignment: .leading, spacing: 30) {
                     Text("Copyright \(configuration.copyright.string)")
                         .font(.system(size: 9.5))
                         .fontWeight(.light)
                         .foregroundStyle(Color.secondary)
-                    
+
                     if !configuration.content.isEmpty {
                         VStack {
                             configuration.content
@@ -91,9 +87,7 @@ extension AboutViewStyle where Self == RegularAboutViewStyle {
     }
 }
 
-
 #Preview {
     AboutView()
         .aboutViewStyle(.extraLarge)
 }
-

@@ -12,15 +12,12 @@ import SwiftUI
 @available(tvOS, unavailable)
 @available(watchOS, unavailable)
 @available(visionOS, unavailable)
-public extension Scene {
-    /**
-     Sets the About view style for this scene.
-     
-     - Parameter style: The style to apply to the About view within this scene.
-     - Returns: A modified scene that uses the specified AboutViewStyle for displaying about information.
-     */
-    func aboutStyle(_ style: some AboutViewStyle) -> some Scene {
+extension Scene {
+    /// Sets the About view style for this scene.
+    ///
+    /// - Parameter style: The style to apply to the About view within this scene.
+    /// - Returns: A modified scene that uses the specified AboutViewStyle for displaying about information.
+    public func aboutStyle(_ style: some AboutViewStyle) -> some Scene {
         self.environment(\.aboutViewStyle, AnyAboutViewStyle(style))
     }
 }
-

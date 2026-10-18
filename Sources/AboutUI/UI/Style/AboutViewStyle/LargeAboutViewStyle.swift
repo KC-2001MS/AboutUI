@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/**
- An About view style that presents application information in a large, visually structured layout.
- */
+/// An About view style that presents application information in a large, visually structured layout.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -18,24 +16,22 @@ import SwiftUI
 public struct LargeAboutViewStyle: AboutViewStyle {
     /// Creates a new instance of the large About view style.
     public init() {}
-    /**
-     Creates the view representing the body of the large About view style.
-     
-     - Parameter configuration: The configuration for the About view style.
-     - Returns: A view that displays the About information using the large style.
-     */
+    /// Creates the view representing the body of the large About view style.
+    ///
+    /// - Parameter configuration: The configuration for the About view style.
+    /// - Returns: A view that displays the About information using the large style.
     public func makeBody(configuration: Configuration) -> some View {
         HStack(alignment: .center, spacing: 20) {
             configuration.appIcon
                 .scaledToFit()
                 .frame(width: 130)
                 .padding(15)
-            
+
             VStack(alignment: .leading, spacing: 40) {
                 VStack(alignment: .leading, spacing: 0) {
                     configuration.appName
                         .font(.system(size: 37.5))
-                    
+
                     Text(
                         "Version \(configuration.version.string) (\(configuration.buildNumber.string))",
                         bundle: .module
@@ -44,13 +40,13 @@ public struct LargeAboutViewStyle: AboutViewStyle {
                     .fontWeight(.light)
                     .foregroundStyle(Color.secondary)
                 }
- 
+
                 VStack(alignment: .leading, spacing: 30) {
                     Text("Copyright \(configuration.copyright.string)")
                         .font(.system(size: 9.5))
                         .fontWeight(.light)
                         .foregroundStyle(Color.secondary)
-                    
+
                     if !configuration.content.isEmpty {
                         VStack {
                             configuration.content
@@ -67,7 +63,7 @@ public struct LargeAboutViewStyle: AboutViewStyle {
         .containerBackground(Material.ultraThin, for: .window)
         .ignoresSafeArea()
         .padding(.vertical, 20)
-        .padding(.horizontal,20)
+        .padding(.horizontal, 20)
         .frame(alignment: .center)
     }
 }
@@ -84,9 +80,7 @@ extension AboutViewStyle where Self == LargeAboutViewStyle {
     }
 }
 
-
 #Preview {
     AboutView()
         .aboutViewStyle(.large)
 }
-

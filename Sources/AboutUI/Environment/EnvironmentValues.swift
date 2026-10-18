@@ -15,7 +15,7 @@ import SwiftUI
 extension EnvironmentValues {
     /// An About presentation action stored in a view’s environment.
     @Entry public var openAbout: OpenAboutAction = OpenAboutAction()
-    
+
     @Entry internal var aboutViewStyle: AnyAboutViewStyle = AnyAboutViewStyle(
         .default
     )

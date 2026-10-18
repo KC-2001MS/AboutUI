@@ -1,13 +1,12 @@
 //
 //  SampleApp.swift
 //  Sample
-//  
+//
 //  Created by Keisuke Chinone on 2024/09/25.
 //
 
-
-import SwiftUI
 import AboutUI
+import SwiftUI
 
 @main
 struct SampleApp: App {
@@ -15,17 +14,17 @@ struct SampleApp: App {
         WindowGroup {
             ContentView()
         }
-        
-//        About {
-//            Button(action: {
-//                
-//            }) {
-//                Text("Info")
-//                .frame(maxWidth: .infinity)
-//            }
-//            .buttonStyle(.bordered)
-//        }
-        
+
+        //        About {
+        //            Button(action: {
+        //
+        //            }) {
+        //                Text("Info")
+        //                .frame(maxWidth: .infinity)
+        //            }
+        //            .buttonStyle(.bordered)
+        //        }
+
         About()
     }
 }

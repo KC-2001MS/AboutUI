@@ -11,10 +11,10 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "AboutUI",
-            targets: ["AboutUI"]),
+            targets: ["AboutUI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.4.0"),
+        .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.4.0")
     ],
     targets: [
         .target(
@@ -22,6 +22,6 @@ let package = Package(
             resources: [
                 .process("Localizable.xcstrings")
             ]
-        ),
+        )
     ]
 )

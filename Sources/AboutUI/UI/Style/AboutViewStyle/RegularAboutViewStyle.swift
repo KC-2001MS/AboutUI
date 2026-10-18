@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/**
- An About view style that displays application information in a regular, compact layout.
- */
+/// An About view style that displays application information in a regular, compact layout.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -18,12 +16,10 @@ import SwiftUI
 public struct RegularAboutViewStyle: AboutViewStyle {
     /// Creates a new instance of the regular About view style.
     public init() {}
-    /**
-     Creates the view representing the body of the regular About view style.
-     
-     - Parameter configuration: The configuration for the About view style.
-     - Returns: A view that displays the About information using the regular style.
-     */
+    /// Creates the view representing the body of the regular About view style.
+    ///
+    /// - Parameter configuration: The configuration for the About view style.
+    /// - Returns: A view that displays the About information using the regular style.
     public func makeBody(configuration: Configuration) -> some View {
         VStack(alignment: .center, spacing: 30) {
             VStack(alignment: .center, spacing: 10) {
@@ -31,13 +27,13 @@ public struct RegularAboutViewStyle: AboutViewStyle {
                     configuration.appIcon
                         .scaledToFit()
                         .frame(width: 135)
-                    
+
                     configuration.appName
                         .font(.headline)
                         .textSelection(.enabled)
                         .lineLimit(1)
                 }
-            
+
                 Text(
                     "\(configuration.appName.string) Version \(configuration.version.string)",
                     bundle: .module
@@ -50,8 +46,7 @@ public struct RegularAboutViewStyle: AboutViewStyle {
             Text("Copyright \(configuration.copyright.string)")
                 .font(.footnote)
                 .textSelection(.enabled)
-                
-                    
+
             if !configuration.content.isEmpty {
                 VStack {
                     configuration.content
@@ -87,9 +82,7 @@ extension AboutViewStyle where Self == RegularAboutViewStyle {
     }
 }
 
-
 #Preview {
     AboutView()
         .aboutViewStyle(.regular)
 }
-

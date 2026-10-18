@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// A view styling protocol for AboutUIs that defines the appearance and behavior of an About view.
-/// 
+///
 /// Conforming types provide a body view that renders the content based on the given configuration.
 @available(macOS 15, *)
 @available(iOS, unavailable)
@@ -17,16 +17,14 @@ import SwiftUI
 @available(watchOS, unavailable)
 @preconcurrency public protocol AboutViewStyle {
     typealias Configuration = AboutViewStyleConfiguration
-    
+
     /// The type of view representing the body of this style.
     associatedtype Body: View
-    
-    /**
-     Creates the body view for this style.
-     
-     - Parameter configuration: The style configuration containing the content and related properties.
-     - Returns: A view representing the body of the style.
-     */
+
+    /// Creates the body view for this style.
+    ///
+    /// - Parameter configuration: The style configuration containing the content and related properties.
+    /// - Returns: A view representing the body of the style.
     @preconcurrency @ViewBuilder func makeBody(configuration: Configuration) -> Body
 }
 
@@ -37,21 +35,19 @@ import SwiftUI
 @available(watchOS, unavailable)
 struct AnyAboutViewStyle: AboutViewStyle {
     private var _makeBody: (Configuration) -> AnyView
-    
+
     init<S: AboutViewStyle>(_ style: S) {
         _makeBody = { configuration in
             AnyView(style.makeBody(configuration: configuration))
         }
     }
-    
+
     func makeBody(configuration: Configuration) -> some View {
         _makeBody(configuration)
     }
 }
 
-/**
- The configuration object containing content and properties used by an About view style.
- */
+/// The configuration object containing content and properties used by an About view style.
 @available(macOS 15, *)
 @available(iOS, unavailable)
 @available(visionOS, unavailable)
@@ -59,9 +55,9 @@ struct AnyAboutViewStyle: AboutViewStyle {
 @available(watchOS, unavailable)
 public struct AboutViewStyleConfiguration: Sendable {
     var subIcon: Image
-    
+
     var content: Content
-    
+
     init(subIcon: Image, content: Content) {
         self.subIcon = subIcon
         self.content = content
@@ -74,23 +70,22 @@ public struct AboutViewStyleConfiguration: Sendable {
             self.content = content
             self.isEmpty = false
         }
-        
+
         init() {
             self.content = EmptyView()
             self.isEmpty = true
         }
-        
+
         var body: some View { AnyView(content) }
     }
-    
+
     /// The app icon displayed in the About view.
     @preconcurrency var appIcon: AppIcon {
         return AppIcon()
     }
-    
+
     struct AppIcon: View, Sendable {
         nonisolated init() {}
-
 
         var body: some View {
             // Uses the current application icon, regardless of the asset's name.
@@ -98,65 +93,65 @@ public struct AboutViewStyleConfiguration: Sendable {
                 .resizable()
         }
     }
-    
+
     /// The app name displayed in the About view.
-    @preconcurrency  var appName: AppName {
+    @preconcurrency var appName: AppName {
         return AppName()
     }
 
     struct AppName: View, Sendable {
         let string: String = {
-            return Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+            return Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String ?? Bundle.main.infoDictionary?[
+                "CFBundleName"] as? String ?? ""
         }()
-        
+
         var body: some View {
             Text("\(string)", bundle: .module)
         }
     }
-    
+
     /// The app version displayed in the About view.
-    @preconcurrency  var version: Version {
+    @preconcurrency var version: Version {
         return Version()
     }
-    
+
     struct Version: View, Sendable {
         let string: String = {
             return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
         }()
-        
+
         var body: some View {
             Text("\(string)", bundle: .module)
         }
     }
-    
+
     /// The build number displayed in the About view.
-    @preconcurrency  var buildNumber: BuildNumber {
+    @preconcurrency var buildNumber: BuildNumber {
         return BuildNumber()
     }
-    
+
     struct BuildNumber: View, Sendable {
         let string: String = {
             return Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
         }()
-        
+
         var body: some View {
             Text("\(string)", bundle: .module)
         }
     }
-    
+
     /// The copyright information displayed in the About view.
     var copyright: Copyright {
         return Copyright()
     }
-    
+
     struct Copyright: View, Sendable {
         let string: String = {
             return Bundle.main.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
         }()
-        
+
         var body: some View {
             Text("\(string)", bundle: .module)
         }
     }
 }
-
