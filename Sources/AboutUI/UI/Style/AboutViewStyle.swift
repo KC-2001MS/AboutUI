@@ -89,13 +89,12 @@ public struct AboutViewStyleConfiguration: Sendable {
     }
     
     struct AppIcon: View, Sendable {
-        let appIcon: NSImage = Bundle.main.image(forResource: NSImage.Name("AppIcon")) ?? NSImage()
-        
         nonisolated init() {}
-            
-        
+
+
         var body: some View {
-            Image(nsImage: appIcon)
+            // Uses the current application icon, regardless of the asset's name.
+            Image(nsImage: NSApplication.shared.applicationIconImage)
                 .resizable()
         }
     }

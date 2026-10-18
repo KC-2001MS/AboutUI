@@ -8,9 +8,81 @@
 import SwiftUI
 
 /**
- A scene that presents an interface about the application, typically shown as an “About” window or panel.
- 
- Use this scene to display important app information, such as name, version, and copyright.
+ A SwiftUI Scene that presents a native “About” window for your app on macOS.
+
+ About provides a dedicated window titled “About <App Name>” and wires up a
+ corresponding menu command so users can open it from the standard app menu.
+ You can supply custom content for the window and optionally customize the
+ label used in the menu command.
+
+ - Displays a window whose title is localized as “About <App Name>”.
+ - Registers an “About” menu command that opens the window.
+ - Uses the app’s localized bundle name (`CFBundleName`) for the title.
+ - Restricts window resizing to the size of its content.
+
+ ## Generics
+ - Content: The view shown inside the About window.
+ - Label: The view used as the label for the About menu command.
+
+ ## Customization
+ - Provide a custom `Content` to show additional details or actions relevant to users,
+   such as links to support pages, license information, or buttons that open help.
+ - Provide a custom `Label` to tailor the menu command’s appearance.
+ - If you omit either, sensible defaults are used:
+   - `Content` defaults to `EmptyView`.
+   - `Label` defaults to `DefaultAboutLinkLabel`.
+
+ > Important:  The About scene automatically includes core app metadata (such as the app name
+   and version). Avoid duplicating these in your custom content. Instead, focus
+   on supplemental information and actions (support, help, acknowledgments, etc.).
+
+ ## Initializers
+ - ``init(content:label:)``
+   Provide both the window content and the menu command label.
+ - ``init(content:)``
+   Provide custom window content and use the default menu command label.
+ - ``init(label:)``
+   Provide a custom menu command label with empty window content.
+ - ``init()``
+   Use default content and default label.
+
+ ## Example
+ ```swift
+ @main
+ struct MyApp: App {
+     var body: some Scene {
+         // About window with default labels and content (no additions)
+         About()
+
+         // Example of displaying additional actions such as support or help.
+         // Note: The app name and version are automatically displayed in About, so do not duplicate them here.
+         About {
+             VStack(alignment: .leading, spacing: 12) {
+                 Link("Support Website", destination: URL(string: "https://example.com/support")!)
+                 Link("User Guide", destination: URL(string: "https://example.com/help")!)
+                 Button("Check for updates…") {
+                     // Initiate the app update flow
+                 }
+             }
+             .padding()
+         }
+     }
+ }
+```
+
+ ## Localization
+ - The window title string is localized from the package bundle (`Bundle.module`).
+ - The app name is resolved from the main bundle’s `CFBundleName`,
+   preferring the localized value when available.
+
+ ## Accessibility
+ - Ensure custom content includes appropriate accessibility labels
+   and traits to provide a great experience for all users.
+
+ ## Notes
+ - The window’s resizability is constrained to its content size to maintain
+   a compact, consistent About presentation.
+ - This type supersedes ``AboutScene`` (deprecated alias).
  */
 @available(macOS 15, *)
 @available(iOS, unavailable)
